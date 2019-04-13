@@ -1,0 +1,12 @@
+<div style = "position:fixed;background-color:#1B1A1F;left:0;top:0;width:100%;height:100%;z-index:-1;">
+    
+    <div *ngFor="let col of columns"
+        style="position:fixed;width:1px;height:100%; background-color:#555555; top:0;"
+        [ngStyle]="{'left': col}">
+    </div>
+    
+    <div *ngFor="let row of rows"
+        style="position:fixed;height:1px;width:100%; background-color:#555555; left:0;"
+        [ngStyle]="{'top': row}">
+    </div>
+</div>
