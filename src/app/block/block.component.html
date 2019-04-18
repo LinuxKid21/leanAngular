@@ -1,0 +1,10 @@
+<div
+class="block {{selected ? 'selected' : ''}} {{dragging ? 'dragging' : ''}}"
+(mouseenter)="mouseEnter()"
+(mouseleave)="mouseLeave()"
+[style.left.px]="x"
+[style.top.px]="y">
+    <p class = "title">
+      {{title}}
+    </p>
+</div>

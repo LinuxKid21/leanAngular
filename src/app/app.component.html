@@ -1,8 +1,28 @@
-<p>
-    This is a rather interesting way <b>for</b> things to work!
-</p>
-<h1>
-    {{title}}
-</h1>
+<div
+(mousedown)="mouseDown($event)"
+(mousemove)="mouseMove($event)"
+(window:mouseup)="mouseUp($event)"
+>
+    <!-- block list -->
+    <!-- <app-block (mousedown)="mouseDown($event)">
+        <div title>Block Title!</div>
+    </app-block>
 
-<app-background-grid></app-background-grid>
+    <app-block (mousedown)="mouseDown($event)">
+        <div title>Another Block</div>
+    </app-block>
+
+    <app-block (mousedown)="mouseDown($event)">
+        <div title>3 whole blocks... WHOA</div>
+    </app-block> -->
+    <ng-template #blocktemplate></ng-template>
+
+    <p>
+        This is a rather interesting way <b>for</b> things to work!
+    </p>
+    <h1>
+        {{title}}
+    </h1>
+
+    <app-background-grid></app-background-grid>
+</div>

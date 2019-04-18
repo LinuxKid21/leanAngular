@@ -1,0 +1,25 @@
+.block {
+    background-color: #424242;
+    position:absolute;
+    display:block;
+    
+    padding:10px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: #dfdfdf;
+    border-style: solid;
+}
+
+.selected {
+    border-color: #4f91f2;
+}
+
+.dragging {
+    border-color: #7fc1ff;
+}
+
+.title {
+    margin:5px;
+    display:block;
+    white-space: nowrap;
+}
