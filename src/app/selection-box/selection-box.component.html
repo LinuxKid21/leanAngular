@@ -1,0 +1,7 @@
+<div #selectionDiv class="selection-box"
+style.left.px="{{x2 < x ? x2 : x}}"
+style.top.px="{{y2 < y ? y2 : y}}"
+style.width.px="{{x2 < x ? x-x2 : x2-x}}"
+style.height.px="{{y2 < y ? y-y2 : y2-y}}"
+style.display="{{isHidden ? 'none' : 'block'}}">
+</div>

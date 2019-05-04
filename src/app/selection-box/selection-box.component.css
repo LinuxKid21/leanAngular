@@ -1,0 +1,9 @@
+.selection-box {
+    background-color: #ffffff44;
+    position:absolute;
+    
+    padding:0px;
+    border-width: 3px;
+    border-color: #dfdfdf;
+    border-style: dashed;
+}

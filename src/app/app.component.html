@@ -3,18 +3,6 @@
 (mousemove)="mouseMove($event)"
 (window:mouseup)="mouseUp($event)"
 >
-    <!-- block list -->
-    <!-- <app-block (mousedown)="mouseDown($event)">
-        <div title>Block Title!</div>
-    </app-block>
-
-    <app-block (mousedown)="mouseDown($event)">
-        <div title>Another Block</div>
-    </app-block>
-
-    <app-block (mousedown)="mouseDown($event)">
-        <div title>3 whole blocks... WHOA</div>
-    </app-block> -->
     <ng-template #blocktemplate></ng-template>
 
     <p>
@@ -23,6 +11,8 @@
     <h1>
         {{title}}
     </h1>
+
+    <app-selection-box #selectionbox></app-selection-box>
 
     <app-background-grid></app-background-grid>
 </div>

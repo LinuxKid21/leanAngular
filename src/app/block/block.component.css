@@ -14,10 +14,6 @@
     border-color: #4f91f2;
 }
 
-.dragging {
-    border-color: #7fc1ff;
-}
-
 .title {
     margin:5px;
     display:block;

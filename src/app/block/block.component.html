@@ -1,5 +1,5 @@
-<div
-class="block {{selected ? 'selected' : ''}} {{dragging ? 'dragging' : ''}}"
+<div #blockDiv
+class="block {{selected ? 'selected' : ''}}"
 (mouseenter)="mouseEnter()"
 (mouseleave)="mouseLeave()"
 [style.left.px]="x"

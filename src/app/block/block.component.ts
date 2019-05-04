@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef
+} from '@angular/core';
 
 @Component({
   selector: 'app-block',
@@ -6,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit {
+    @ViewChild('blockDiv') blockDiv: ElementRef;
+    
     selected = false;
-    dragging = false;
     startDragMouseX = 0;
     startDragMouseY = 0;
     startDragX = 0;
@@ -27,5 +33,9 @@ export class BlockComponent implements OnInit {
     }
     mouseLeave() {
         this.mouseover = false;
+    }
+    
+    getBoundingClientRect() {
+        return this.blockDiv.nativeElement.getBoundingClientRect();
     }
 }
