@@ -35,8 +35,7 @@ export class AppComponent  implements OnInit {
         const component = this.blockContainer.createComponent(componentFactory);
         
         component.instance.title = "new title";
-        component.instance.x = x;
-        component.instance.y = y;
+        this.moveSnapped(component.instance, x, y);
         
         this.blocks.push(component.instance);
     }
@@ -98,8 +97,7 @@ export class AppComponent  implements OnInit {
                     
                     var diffX = event.pageX - e.startDragMouseX;
                     var diffY = event.pageY - e.startDragMouseY;
-                    e.x = e.startDragX + diffX;
-                    e.y = e.startDragY + diffY;
+                    this.moveSnapped(e, e.startDragX + diffX, e.startDragY + diffY);
                 }
             }
         }
@@ -129,5 +127,9 @@ export class AppComponent  implements OnInit {
             this.selectingRect = false;
             this.selectionBox.isHidden = true;
         }
+    }
+    moveSnapped(block, x, y) {
+        block.x = Math.round(x / 25) * 25;
+        block.y = Math.round(y / 25) * 25;
     }
 }
