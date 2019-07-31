@@ -2,9 +2,7 @@ import {
     Component,
     OnInit,
     ViewChild,
-    ViewChildren,
     ViewContainerRef,
-    QueryList,
     ComponentFactoryResolver
 } from '@angular/core';
 import { BlockComponent } from './block/block.component';
