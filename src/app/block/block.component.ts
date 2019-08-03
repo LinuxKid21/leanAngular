@@ -12,7 +12,7 @@ import {
 })
 export class BlockComponent implements OnInit {
     @ViewChild('blockDiv') blockDiv: ElementRef;
-    
+
     selected = false;
     startDragMouseX = 0;
     startDragMouseY = 0;
@@ -21,20 +21,19 @@ export class BlockComponent implements OnInit {
     mouseover = false;
     x = 0;
     y = 0;
-    title="default title";
 
     constructor() { }
 
     ngOnInit() {
     }
-    
+
     mouseEnter() {
         this.mouseover = true;
     }
     mouseLeave() {
         this.mouseover = false;
     }
-    
+
     getBoundingClientRect() {
         return this.blockDiv.nativeElement.getBoundingClientRect();
     }

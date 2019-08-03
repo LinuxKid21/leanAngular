@@ -1,0 +1,9 @@
+<p #titleText class = "title" (dblclick)="editText()" > <!-- [hidden]="!editing"> -->
+  {{title}}
+</p>
+<form>
+  <input #inputField
+    [hidden]="true"
+    (focusout)="finishedInput()"
+    (keydown.enter)="$event.preventDefault(); finishedInput()"/>
+</form>

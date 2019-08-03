@@ -4,7 +4,5 @@ class="block {{selected ? 'selected' : ''}}"
 (mouseleave)="mouseLeave()"
 [style.left.px]="x"
 [style.top.px]="y">
-    <p class = "title">
-      {{title}}
-    </p>
+    <app-block-label></app-block-label>
 </div>

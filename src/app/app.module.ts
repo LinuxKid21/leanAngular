@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BackgroundGridComponent } from './background-grid/background-grid.component';
 import { BlockComponent } from './block/block.component';
 import { SelectionBoxComponent } from './selection-box/selection-box.component';
+import { BlockLabelComponent } from './block-label/block-label.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BackgroundGridComponent,
     BlockComponent,
-    SelectionBoxComponent
+    SelectionBoxComponent,
+    BlockLabelComponent
   ],
   imports: [
     BrowserModule,
