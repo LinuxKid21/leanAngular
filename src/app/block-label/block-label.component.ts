@@ -27,7 +27,7 @@ export class BlockLabelComponent implements OnInit {
         this.editing = true;
         this.titleText.nativeElement.style.display = 'none';
         this.inputField.nativeElement.style.display = 'block';
-        this.inputField.nativeElement.value = this.titleText.nativeElement.textContent.trim();
+        this.inputField.nativeElement.value = this.title;
         this.inputField.nativeElement.focus();
         this.inputField.nativeElement.select();
     }
@@ -37,7 +37,7 @@ export class BlockLabelComponent implements OnInit {
         this.inputField.nativeElement.style.display = 'none';
 
         if(this.inputField.nativeElement.value.trim() != '') {
-            this.title = this.inputField.nativeElement.value;
+            this.title = this.inputField.nativeElement.value.trim();
         }
     }
 }

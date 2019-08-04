@@ -3,7 +3,8 @@ import {
     OnInit,
     ViewChild,
     ViewContainerRef,
-    ComponentFactoryResolver
+    ComponentFactoryResolver,
+    ElementRef
 } from '@angular/core';
 import { BlockComponent } from './block/block.component';
 import { SelectionBoxComponent } from './selection-box/selection-box.component';
@@ -15,6 +16,7 @@ import { SelectionBoxComponent } from './selection-box/selection-box.component';
 })
 export class AppComponent  implements OnInit {
     @ViewChild('blocktemplate', {read: ViewContainerRef}) blockContainer: ViewContainerRef;
+    @ViewChild('masterDiv') masterDiv: ElementRef;
     @ViewChild(SelectionBoxComponent) selectionBox: SelectionBoxComponent;
     title = 'webdev';
     blocks = [];
@@ -31,13 +33,18 @@ export class AppComponent  implements OnInit {
         // Create component dynamically inside the ng-template
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(BlockComponent);
         const component = this.blockContainer.createComponent(componentFactory);
-        
+
         this.moveSnapped(component.instance, x, y);
 
         this.blocks.push(component.instance);
     }
 
     mouseDown(event : MouseEvent) {
+        // remove focus
+        if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+        }
+
         if(event.button == 0) { // left
             var overBlock = false; // check if it so to create selection box
             var overAnySelected = false; // check if it is just to drag
