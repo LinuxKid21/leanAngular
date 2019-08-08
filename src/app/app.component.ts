@@ -7,6 +7,7 @@ import {
     ElementRef
 } from '@angular/core';
 import { BlockComponent } from './block/block.component';
+import { BlockService } from './block/block.service';
 import { SelectionBoxComponent } from './selection-box/selection-box.component';
 
 @Component({
@@ -23,7 +24,8 @@ export class AppComponent  implements OnInit {
     dragging = false;
     selectingRect = false;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private blockService: BlockService) {
+        blockService.setBlockArray(this.blocks);
     }
 
     ngOnInit() {

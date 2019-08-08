@@ -5,6 +5,8 @@ import {
     ElementRef
 } from '@angular/core';
 
+import { BlockService } from '../block/block.service';
+
 @Component({
   selector: 'app-block-label',
   templateUrl: './block-label.component.html',
@@ -17,7 +19,8 @@ export class BlockLabelComponent implements OnInit {
     editing = false;
     title="default title";
 
-    constructor() { }
+    constructor(private blockService: BlockService) {
+    }
 
     ngOnInit() {
     }
@@ -36,8 +39,14 @@ export class BlockLabelComponent implements OnInit {
         this.titleText.nativeElement.style.display = 'block';
         this.inputField.nativeElement.style.display = 'none';
 
-        if(this.inputField.nativeElement.value.trim() != '') {
-            this.title = this.inputField.nativeElement.value.trim();
+        var newTitle = this.inputField.nativeElement.value.trim()
+        if(newTitle != '') {
+            if(this.blockService.getBlockNames().includes(newTitle)) {
+                // TODO: dialog
+            }
+            else {
+                this.title = this.inputField.nativeElement.value.trim();
+            }
         }
     }
 }

@@ -5,6 +5,8 @@ import {
     ElementRef
 } from '@angular/core';
 
+import { BlockLabelComponent } from '../block-label/block-label.component';
+
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
@@ -12,6 +14,7 @@ import {
 })
 export class BlockComponent implements OnInit {
     @ViewChild('blockDiv') blockDiv: ElementRef;
+    @ViewChild(BlockLabelComponent) blockLabelComponent: BlockLabelComponent;
 
     selected = false;
     startDragMouseX = 0;
@@ -25,6 +28,10 @@ export class BlockComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+    }
+
+    getName() {
+        return this.blockLabelComponent.title;
     }
 
     mouseEnter() {
