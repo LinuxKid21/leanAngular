@@ -41,6 +41,8 @@ export class AppComponent  implements OnInit {
     }
 
     mouseDown(event : MouseEvent) {
+        var mouseX = event.pageX - this.masterDiv.nativeElement.offsetLeft;
+        var mouseY = event.pageY - this.masterDiv.nativeElement.offsetTop;
         // remove focus
         if (document.activeElement instanceof HTMLElement) {
             document.activeElement.blur();
@@ -77,8 +79,8 @@ export class AppComponent  implements OnInit {
                     }
                 }
                 if(e.selected) {
-                    e.startDragMouseX = event.pageX;
-                    e.startDragMouseY = event.pageY;
+                    e.startDragMouseX = mouseX;
+                    e.startDragMouseY = mouseY;
                     e.startDragX = e.x;
                     e.startDragY = e.y;
                 }
@@ -86,35 +88,37 @@ export class AppComponent  implements OnInit {
 
             if(!overBlock) {
                 event.preventDefault();
-                this.selectionBox.x = event.pageX;
-                this.selectionBox.y = event.pageY;
-                this.selectionBox.x2 = event.pageX;
-                this.selectionBox.y2 = event.pageY;
+                this.selectionBox.x = mouseX;
+                this.selectionBox.y = mouseY;
+                this.selectionBox.x2 = mouseX;
+                this.selectionBox.y2 = mouseY;
                 this.selectionBox.isHidden = false;
                 this.selectingRect = true;
             }
         }
         if(event.button == 2) { // right
-            this.addComponent(event.pageX, event.pageY);
+            this.addComponent(mouseX, mouseY);
         }
     }
     mouseMove(event : MouseEvent) {
+        var mouseX = event.pageX - this.masterDiv.nativeElement.offsetLeft;
+        var mouseY = event.pageY - this.masterDiv.nativeElement.offsetTop;
         if(this.dragging)
         {
             for(let e of this.blocks) {
                 if(e.selected) {
                     event.preventDefault();
 
-                    var diffX = event.pageX - e.startDragMouseX;
-                    var diffY = event.pageY - e.startDragMouseY;
+                    var diffX = mouseX - e.startDragMouseX;
+                    var diffY = mouseY - e.startDragMouseY;
                     this.moveSnapped(e, e.startDragX + diffX, e.startDragY + diffY);
                 }
             }
         }
         if(this.selectingRect) {
             event.preventDefault();
-            this.selectionBox.x2 = event.pageX;
-            this.selectionBox.y2 = event.pageY;
+            this.selectionBox.x2 = mouseX;
+            this.selectionBox.y2 = mouseY;
         }
     }
     mouseUp(event : MouseEvent) {
@@ -133,6 +137,9 @@ export class AppComponent  implements OnInit {
                 }
             }
 
+            this.moveFinished();
+
+            // common state when releasing mouse from any operation
             this.dragging = false;
             this.selectingRect = false;
             this.selectionBox.isHidden = true;
@@ -141,5 +148,23 @@ export class AppComponent  implements OnInit {
     moveSnapped(block, x, y) {
         block.x = Math.round(x / 25) * 25;
         block.y = Math.round(y / 25) * 25;
+    }
+
+    moveFinished() {
+        // we cannot have elements with negative positions. Shift everything
+        var desiredLeft = 0;
+        var desiredTop = 0;
+        for(let e of this.blocks) {
+            if(e.x < desiredLeft)
+            {
+                desiredLeft = e.x;
+            }
+            if(e.y < desiredTop)
+            {
+                desiredTop = e.y;
+            }
+        }
+        this.masterDiv.nativeElement.style.left = -desiredLeft + 'px';
+        this.masterDiv.nativeElement.style.top = -desiredTop + 'px';
     }
 }
