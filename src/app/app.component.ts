@@ -19,7 +19,6 @@ export class AppComponent  implements OnInit {
     @ViewChild('blocktemplate', {read: ViewContainerRef}) blockContainer: ViewContainerRef;
     @ViewChild('masterDiv') masterDiv: ElementRef;
     @ViewChild(SelectionBoxComponent) selectionBox: SelectionBoxComponent;
-    title = 'webdev';
     blocks = [];
     dragging = false;
     selectingRect = false;
